@@ -1,5 +1,8 @@
 # ActiveRecordMultiConfig
 
+## Build Status
+[![Build Status](https://secure.travis-ci.org/shadabahmed/multi_config.png)](https://secure.travis-ci.org/shadabahmed/multi_config)
+
 TODO: Write a gem description
 
 ## Installation
