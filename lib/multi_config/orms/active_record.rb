@@ -9,12 +9,13 @@ module MultiConfig
       module ClassMethods
         def config_file=(file_name)
           file_name += '.yml' unless File.extname(file_name).eql? '.yml'
-          namespace = File.basename(file_name, '.yml')
-          add_to_db_configs(file_name, namespace)
-          unless configurations.include? "#{namespace}_#{::Rails.env}"
-            raise "Configuration for #{::Rails.env} environment not defined in #{file_name}"
+          unless file_name == 'database.yml'
+            namespace = File.basename(file_name, '.yml')
+            add_to_db_configs(file_name, namespace)
+            raise "Configuration for #{::Rails.env} environment not defined in #{config_path file_name}" unless
+                configurations.include? "#{namespace}_#{::Rails.env}"
+            establish_connection "#{namespace}_#{::Rails.env}"
           end
-          establish_connection "#{namespace}_#{::Rails.env}"
         end
 
         private
@@ -33,14 +34,13 @@ module MultiConfig
 
         def config(file_name, namespace)
           begin
-            config = {}
-            YAML.load(ERB.new(File.read(config_path(file_name))).result).each do |k, v|
-              config["#{namespace}_#{k}"] = v
+            YAML.load(ERB.new(File.read(config_path(file_name))).result).inject({}) do |hash,(k,v)|
+              hash["#{namespace}_#{k}"]=v
+              hash
             end
-            config
-          rescue
+          rescue Exception => exc
             raise "File #{config_path file_name} does not exist in config" unless File.exists?(config_path(file_name))
-            raise "Invalid config file #{file_name}"
+            raise "Invalid config file #{config_path file_name}"
           end
         end
       end
