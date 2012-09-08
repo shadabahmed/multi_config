@@ -10,8 +10,13 @@ describe ActiveRecord::Base, "methods" do
   end
 
   it "should have multi config methods" do
-    ActiveRecord::Base.singleton_methods.should include('config_file=')
+    ActiveRecord::Base.singleton_methods.should include(RUBY_VERSION =~ /^1\.8/ ? 'config_file=' : :'config_file=')
   end
+
+  it "should have @@db_config class variable set" do
+    ActiveRecord::Base.send(:class_variable_get, '@@db_configs').should == []
+  end
+
 end
 
 
