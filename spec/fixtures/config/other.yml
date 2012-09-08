@@ -1,0 +1,8 @@
+development: &development
+  database: other_db
+  host: localhost
+  adapter: sqlite3
+
+test:
+  <<: *development
+
