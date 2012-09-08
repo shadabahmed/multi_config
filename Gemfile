@@ -8,4 +8,6 @@ group :test do
   gem 'rspec'
   gem 'autotest'
   gem 'rcov'
+  gem 'rails', '~> 3.0'
+  gem 'sqlite3'
 end

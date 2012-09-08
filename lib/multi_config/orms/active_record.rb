@@ -39,7 +39,7 @@ module MultiConfig
             end
             config
           rescue
-            raise "File #{file_name} does not exist in config" unless File.exists?(config_path(file_name))
+            raise "File #{config_path file_name} does not exist in config" unless File.exists?(config_path(file_name))
             raise "Invalid config file #{file_name}"
           end
         end

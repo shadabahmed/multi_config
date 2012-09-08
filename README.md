@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'active_record_multi_config'
+    gem 'multi_config'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install active_record_multi_config
+    $ gem install multi_config
 
 ## Usage
 

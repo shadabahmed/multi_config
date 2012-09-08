@@ -1,0 +1,7 @@
+development: &development
+  database: db
+  host: localhost
+  adapter: sqlite3
+
+test:
+  <<: *development
