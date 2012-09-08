@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = [""]
   gem.description   = %q{This gem lets you specify different config file for an ActiveRecord Model}
   gem.summary       = %q{Use this gem to use multiple db config files}
-  gem.homepage      = "https://github.com/shadykiller/multi_config"
+  gem.homepage      = "https://github.com/shadabahmed/multi_config"
 
   # Load Paths...
   gem.files         = `git ls-files`.split($/)
