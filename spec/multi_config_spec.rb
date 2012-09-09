@@ -5,6 +5,7 @@ describe MultiConfig::ORMs::ActiveRecord do
   let!(:other_config){ load_namespaced_config('other.yml') }
   before(:each) do
     @test_class = Class.new
+    @test_class.stub_chain(:name).and_return('test_class')
     @test_class.stub(:configurations).and_return({})
     @test_class.stub(:establish_connection)
     @test_class.send(:include, MultiConfig::ORMs::ActiveRecord)
@@ -32,11 +33,11 @@ describe MultiConfig::ORMs::ActiveRecord do
 
     describe "should modify class variable @@db_configs" do
       before do
-        test_class.send(:class_variable_get, '@@db_configs').should == []
+        test_class.send(:class_variable_get, '@@db_configs').should == {}
         test_class.config_file = 'other'
       end
       subject {test_class.send(:class_variable_get, '@@db_configs')}
-      it{should == ['other']}
+      it{should == {"other" => ["test_class"]}}
     end
 
     describe "should modify .configurations" do
@@ -86,9 +87,9 @@ describe MultiConfig::ORMs::ActiveRecord do
     describe "should not do anything if database.yml specified" do
       before do
         test_class.should_not_receive(:establish_connection)
-        test_class.should_not_receive(:add_to_db_configs)
-        test_class.should_not_receive(:config_path)
-        test_class.should_not_receive(:config)
+        test_class.should_not_receive(:add_db_config)
+        MultiConfig::ORMs::ActiveRecord::Config.should_not_receive(:path)
+        MultiConfig::ORMs::ActiveRecord::Config.should_not_receive(:load)
         expect {
           test_class.config_file = 'database'
         }.not_to change(test_class, :configurations)
