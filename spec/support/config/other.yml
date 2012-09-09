@@ -1,5 +1,5 @@
 development: &development
-  database: other_db
+  database: db/other_db
   host: localhost
   adapter: sqlite3
 
