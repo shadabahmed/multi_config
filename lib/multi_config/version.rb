@@ -1,3 +1,4 @@
 module MultiConfig
-  VERSION = "0.1.1"
+  # Gem version
+  VERSION = "0.1.6"
 end
