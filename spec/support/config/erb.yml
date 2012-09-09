@@ -1,0 +1,4 @@
+development: &development
+  database: <%= 'erb_db' %>
+  adapter: <%= 'sqlite3' %>
+
