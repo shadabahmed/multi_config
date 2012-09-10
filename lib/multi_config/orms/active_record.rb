@@ -3,6 +3,9 @@ module MultiConfig
   module ORMs
     # Implementation for the ActiveRecord ORM
     module ActiveRecord
+      # Method called when the module is included.
+      # * +mod+ - Name of the class including this module.
+      # Calls mod.extend with param ClassMethods so that methods in ClassMethods module become class methods of the class.
       def self.included(mod)
         mod.extend ClassMethods
         # Setting @@db_configs in the including class. This will help us keep track of database configuration files already included

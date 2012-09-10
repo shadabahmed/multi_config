@@ -5,6 +5,8 @@ module MultiConfig
   # Checking if Rails::Railtie exists. Only then loca this railtie
   if defined? Rails::Railtie
     require 'rails'
+    # Railtie class for the gem. Initialization magic happens here. Inherits from Rails::Railtie so that initializer
+    # methods are available to it
     class Railtie < Rails::Railtie
       # Railtie initializer method
       initializer 'multi_config.active_record' do
