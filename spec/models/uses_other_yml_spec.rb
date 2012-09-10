@@ -11,6 +11,6 @@ describe UsesOtherYml do
   end
 
   it "the @@db_configs should have entry for this class" do
-    UsesOtherYml.send(:class_variable_get,:'@@db_configs').should == {"other" => ["UsesOtherYml"]}
+    UsesOtherYml.send(:class_variable_get, :'@@db_configs').should == {"other" => ["UsesOtherYml"]}
   end
 end

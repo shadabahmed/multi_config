@@ -6,12 +6,12 @@ if ENV['COVERAGE']
   SimpleCov.start do
     # Remove the spec folder from coverage. By default all code files are included. For more config options see
     # https://github.com/colszowka/simplecov
-    add_filter File.expand_path('../../spec',__FILE__)
+    add_filter File.expand_path('../../spec', __FILE__)
   end
 end
 
 # Modify load path so you can require 'multi_config' directly.
-$LOAD_PATH.unshift(File.expand_path('../../lib',__FILE__))
+$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 
 require 'rubygems'
 # Loads bundler setup tasks. Now if I run spec without installing gems then it would say gem not installed and
@@ -30,7 +30,7 @@ require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f}
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |f| require f }
 
 # Set Rails environment as test
 ENV['RAILS_ENV'] = 'test'
