@@ -31,7 +31,6 @@ Or, from the command line:
     test:
       <<: *development
 
-
 ## Notes
 All database config files should be similar to the database.yml. You need to specify configuration for all the environments
 in use like you would specify in database.yml.
@@ -44,7 +43,6 @@ these configs in `other_db_test` and `other_db_development` keys.
 If you need to create migrations for the other db, then you will have to make modifications in the migration file. See this
 [guide](http://stackoverflow.com/questions/1404620/using-rails-migration-on-different-database-than-standard-production-or-devel) on
 how to do that. The parameter for `establish_connection` would be the namespaced key for you config.
-
 
 ## Versions
 All versions require Rails 3.0.x and higher.
@@ -62,7 +60,13 @@ All versions require Rails 3.0.x and higher.
 - Start a feature/bugfix branch
 - Commit and push until you are happy with your contribution
 - Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+- Send me a pull request
 - Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+## Development
+ - Run tests - `rake`
+ - Generate test coverage report - `rake coverage`. Coverage report path - coverage/index.html
+ - Generate documentation - `rake rdoc`
 
 ## Copyright
 
