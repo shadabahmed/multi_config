@@ -8,6 +8,7 @@ v0.1.8, 2012-09-10 ([changes](https://github.com/shadabahmed/multi_config/compar
   * Test for initializers added. Coverage results now 100%
   * Refactoring of spec
   * More documentation
+  * 100% rdoc documentation coverage
 
 v0.1.6, 2012-09-09 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.1...v0.1.6))
 -------------------
