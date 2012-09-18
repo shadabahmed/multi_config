@@ -1,7 +1,11 @@
-Unreleased ([changes](https://github.com/shadabahmed/multi_config/v0.1.8...master))
+Unreleased ([changes](https://github.com/shadabahmed/multi_config/v0.1.9...master))
 -------------------
 **Note: Not implemented yet**
   * Add generators for migrations
+
+v0.1.9, 2012-09-18 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.8...v0.1.9))
+-------------------
+  * Refactored class variables
 
 v0.1.8, 2012-09-10 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.6...v0.1.8))
 -------------------
