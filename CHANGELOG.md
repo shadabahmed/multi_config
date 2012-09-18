@@ -1,4 +1,4 @@
-Unreleased ([changes](https://github.com/shadabahmed/multi_config/v0.1.9...master))
+Unreleased ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.9...master))
 -------------------
 **Note: Not implemented yet**
   * Add generators for migrations
