@@ -14,7 +14,7 @@ describe ActiveRecord::Base, "methods" do
   end
 
   it "should have @@db_config class variable set" do
-    ActiveRecord::Base.send(:class_variable_get, '@@db_configs').should == {}
+    ActiveRecord::Base.send(:class_variable_get, '@@_multi_config_db_configs').should == {}
   end
 
 end

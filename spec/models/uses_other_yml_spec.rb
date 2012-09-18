@@ -10,7 +10,7 @@ describe UsesOtherYml do
     UsesOtherYml.connection.instance_variable_get(:@config)[:database].split('/').last.should == "other_db"
   end
 
-  it "the @@db_configs should have entry for this class" do
-    UsesOtherYml.send(:class_variable_get, :'@@db_configs').should == {"other" => ["UsesOtherYml"]}
+  it "the @@_multi_config_db_configs should have entry for this class" do
+    UsesOtherYml.send(:class_variable_get, :'@@_multi_config_db_configs').should == {"other" => ["UsesOtherYml"]}
   end
 end
