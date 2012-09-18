@@ -8,8 +8,8 @@ module MultiConfig
       # Calls mod.extend with param ClassMethods so that methods in ClassMethods module become class methods of the class.
       def self.included(mod)
         mod.extend ClassMethods
-        # Setting @@db_configs in the including class. This will help us keep track of database configuration files already included
-        mod.send(:class_variable_set, :'@@db_configs', Hash.new { |h, k| h[k] = [] })
+        # Setting @@_multi_config_db_configs in the including class. This will help us keep track of database configuration files already included
+        mod.send(:class_variable_set, :'@@_multi_config_db_configs', Hash.new { |h, k| h[k] = [] })
       end
 
       # This `acts_as` style extension provides the capabilities for using multiple database configuration files. Any
@@ -55,7 +55,7 @@ module MultiConfig
         # same namespace. For .e.g. Models A and B specify config file 'other_db', then other_db.yml will be read only once.
         def add_db_config(file_name, namespace)
           # Read class var from the including class
-          db_configs = class_variable_get(:'@@db_configs')
+          db_configs = class_variable_get(:'@@_multi_config_db_configs')
 
           # Don't do anything if the namespace has already been added
           unless db_configs.include?(namespace)
@@ -85,7 +85,8 @@ module MultiConfig
               hash["#{namespace}_#{k}"]=v
               hash
             end
-          rescue Exception => exc
+          # ruby 1.9 raises SyntaxError exception which is not subclass of
+          rescue StandardError, SyntaxError
             raise "File #{path file_name} does not exist in config" unless File.exists?(path(file_name))
             raise "Invalid config file #{path file_name}"
           end

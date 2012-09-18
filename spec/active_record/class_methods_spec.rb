@@ -24,12 +24,12 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       end
     end
 
-    describe "modifies class variable @@db_configs" do
+    describe "modifies class variable @@_multi_config_db_configs" do
       before do
-        test_class.send(:class_variable_get, '@@db_configs').should == {}
+        test_class.send(:class_variable_get, '@@_multi_config_db_configs').should == {}
         test_class.config_file = 'other'
       end
-      subject { test_class.send(:class_variable_get, '@@db_configs') }
+      subject { test_class.send(:class_variable_get, '@@_multi_config_db_configs') }
       it { should == {"other" => ["test_class"]} }
     end
 
