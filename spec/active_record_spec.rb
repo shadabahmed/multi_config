@@ -5,15 +5,15 @@ describe ActiveRecord::Base, "methods" do
     ActiveRecord::Base.send(:include, MultiConfig::ORMs::ActiveRecord)
   end
 
-  it "should have configurations" do
+  it "has configurations" do
     ActiveRecord::Base.configurations.should_not == {}
   end
 
-  it "should have multi config methods" do
-    ActiveRecord::Base.singleton_methods.should include(RUBY_VERSION =~ /^1\.8/ ? 'config_file=' : :'config_file=')
+  it "has multi config methods" do
+    ActiveRecord::Base.singleton_methods.map(&:to_sym).should include(:'config_file=')
   end
 
-  it "should have @@db_config class variable set" do
+  it "has @@db_config class variable set" do
     ActiveRecord::Base.send(:class_variable_get, '@@_multi_config_db_configs').should == {}
   end
 

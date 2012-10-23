@@ -6,7 +6,7 @@ describe UsesDatabaseYml do
     UsesDatabaseYml.establish_connection
   end
 
-  it "should be connected to the alternate database" do
+  it "connects to the alternate database" do
     UsesDatabaseYml.connection.instance_variable_get(:@config)[:database].split('/').last.should == "db"
   end
 end
