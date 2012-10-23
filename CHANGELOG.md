@@ -1,7 +1,11 @@
-Unreleased ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.9...master))
+Unreleased ([changes](https://github.com/shadabahmed/multi_config/compare/v0.2.0...master))
 -------------------
 **Note: Not implemented yet**
   * Add generators for migrations
+
+v0.2.0, 2012-10-23 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.9...v0.2.0))
+-------------------
+  * Refactored specs
 
 v0.1.9, 2012-09-18 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.8...v0.1.9))
 -------------------
