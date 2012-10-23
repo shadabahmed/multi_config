@@ -11,7 +11,7 @@ describe MultiConfig::Railtie do
       # Remove the class definition
       MultiConfig.send(:remove_const, :Railtie)
     end
-    it "should call Railtie Insert when hook is executed" do
+    it "inserts the module when railtie hook executes" do
       # Reload class definition so that class in instantiated and Railitie.initializer is called
       load 'multi_config.rb'
       MultiConfig::Railtie.should_receive(:insert).once()
@@ -23,7 +23,7 @@ describe MultiConfig::Railtie do
   end
 
   describe '#insert' do
-    it "should call ActiveRecord::Base.include" do
+    it "calls included the module in ActiveRecord" do
       ActiveRecord::Base.should_receive(:send).with(:include, MultiConfig::ORMs::ActiveRecord).once()
       MultiConfig::Railtie.insert
     end

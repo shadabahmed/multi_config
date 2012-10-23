@@ -15,16 +15,16 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
   let(:test_class) { @test_class }
 
   describe "#config_file=" do
-    describe "setting config_file in unspecified environment" do
+    context "unspecified environment" do
       before do
         Rails.stub(:env).and_return('unknown')
       end
-      it "should through error when I specify a config file with environment not defined" do
-        lambda { test_class.config_file = 'other' }.should raise_error
+      it "raises error when I specify a config file with environment not defined" do
+        expect { test_class.config_file = 'other' }.to raise_error
       end
     end
 
-    describe "modifies class variable @@_multi_config_db_configs" do
+    context "modifies class variable @@_multi_config_db_configs" do
       before do
         test_class.send(:class_variable_get, '@@_multi_config_db_configs').should == {}
         test_class.config_file = 'other'
@@ -33,7 +33,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       it { should == {"other" => ["test_class"]} }
     end
 
-    describe "modifies .configurations" do
+    context "modifies .configurations" do
       before do
         test_class.should_receive(:establish_connection).once.with('other_test')
         expect {
@@ -45,7 +45,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       it { should include 'other_test' }
     end
 
-    describe "works as expected when filename without extension .yml is specified" do
+    context "filename without extension .yml is specified" do
       before do
         test_class.should_receive(:establish_connection).once.with('other_test')
         expect {
@@ -57,7 +57,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       it { should include 'other_test' }
     end
 
-    describe "works as expected when filename with extension .yml is specified" do
+    context "filename with extension .yml is specified" do
       before do
         test_class.should_receive(:establish_connection).once.with('other_test')
         expect {
@@ -69,7 +69,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       it { should include 'other_test' }
     end
 
-    describe "multiple calls for config_file= in different models modify configurations only once" do
+    context "config_file= called multiple times in different models with the same file" do
       let(:first_test_class) { Class.new(test_class) }
       let(:second_test_class) { Class.new(test_class) }
       before do
@@ -89,7 +89,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       it { should include 'other_test' }
     end
 
-    describe "does nothing if database.yml specified" do
+    context "when file is database.yml" do
       before do
         test_class.should_not_receive(:establish_connection)
         test_class.should_not_receive(:add_db_config)
