@@ -9,6 +9,6 @@ group :test do
   gem 'autotest', :require => false
   gem 'simplecov', :platforms => :mri_19, :require => false
   gem 'rcov', :platforms => :mri_18
-  gem 'rails', "~> #{ENV["RAILS_VERSION"] || "3.2"}"
+  gem 'rails', "~> #{ENV["RAILS_VERSION"] || "3.2.0"}"
   gem 'sqlite3'
 end
