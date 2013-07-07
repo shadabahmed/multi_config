@@ -1,7 +1,11 @@
-Unreleased ([changes](https://github.com/shadabahmed/multi_config/compare/v0.2.0...master))
+Unreleased ([changes](https://github.com/shadabahmed/multi_config/compare/v0.2.2...master))
 -------------------
 **Note: Not implemented yet**
   * Add generators for migrations
+
+v0.2.2, 2013-07-07 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.2.0...v0.2.2))
+-------------------
+  * Updated for rails 4. Only travis and gemfile needed to be changed
 
 v0.2.0, 2012-10-23 ([changes](https://github.com/shadabahmed/multi_config/compare/v0.1.9...v0.2.0))
 -------------------
