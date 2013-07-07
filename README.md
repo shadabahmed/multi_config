@@ -45,12 +45,11 @@ If you need to create migrations for the other db, then you will have to make mo
 how to do that. The parameter for `establish_connection` would be the namespaced key for you config.
 
 ## Versions
-All versions require Rails 3.0.x and higher.
+All versions require Rails 3.0.x and higher. Tested for Rails 4
 
 ## Roadmap
 
 1. Add support for generators where you can specify which db file to use in the rails generate command. Would mitigate the need to manually modify migrations.
-2. Support for Rails 4
 
 ## Contributing to `multi_config`
 
