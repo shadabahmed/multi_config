@@ -25,7 +25,6 @@ Gem::Specification.new do |gem|
 
   # Added dependencies for development/test
   gem.add_development_dependency("bundler", [">= 1.0.0"])
-  gem.add_development_dependency("rails", [">= 3.0"])
   gem.add_development_dependency("activerecord", [">= 3.0"])
   gem.add_development_dependency("rdoc")
 end
