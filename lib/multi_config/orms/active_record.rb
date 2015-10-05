@@ -43,7 +43,7 @@ module MultiConfig
             # Raise error if the config file does not have the current environment
             raise "Configuration for #{::Rails.env} environment not defined in #{Config.path file_name}" unless configurations.include? "#{namespace}_#{::Rails.env}"
             # Establish connection. This is the only way I found to different database config. Will try to find alternative
-            establish_connection "#{namespace}_#{::Rails.env}"
+            establish_connection :"#{namespace}_#{::Rails.env}"
           end
         end
 
@@ -82,7 +82,7 @@ module MultiConfig
           begin
             require 'erb'
             YAML.load(ERB.new(IO.read(path(file_name))).result).inject({}) do |hash, (k, v)|
-              hash["#{namespace}_#{k}"]=v
+              hash["#{namespace}_#{k}"] = v
               hash
             end
           # ruby 1.9 raises SyntaxError exception which is not subclass of

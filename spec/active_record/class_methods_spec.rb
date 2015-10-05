@@ -30,12 +30,12 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
         test_class.config_file = 'other'
       end
       subject { test_class.send(:class_variable_get, '@@_multi_config_db_configs') }
-      it { should == {"other" => ["test_class"]} }
+      it { should == {"other" => ['test_class']} }
     end
 
     context "modifies .configurations" do
       before do
-        test_class.should_receive(:establish_connection).once.with('other_test')
+        test_class.should_receive(:establish_connection).once.with(:other_test)
         expect {
           test_class.config_file = 'other'
         }.to change(test_class, :configurations).from({}).to(other_config)
@@ -47,7 +47,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
 
     context "filename without extension .yml is specified" do
       before do
-        test_class.should_receive(:establish_connection).once.with('other_test')
+        test_class.should_receive(:establish_connection).once.with(:other_test)
         expect {
           test_class.config_file = 'other'
         }.to change(test_class, :configurations).from({}).to(other_config)
@@ -59,7 +59,7 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
 
     context "filename with extension .yml is specified" do
       before do
-        test_class.should_receive(:establish_connection).once.with('other_test')
+        test_class.should_receive(:establish_connection).once.with(:other_test)
         expect {
           test_class.config_file = 'other.yml'
         }.to change(test_class, :configurations).from({}).to(other_config)
@@ -73,12 +73,12 @@ describe MultiConfig::ORMs::ActiveRecord::ClassMethods do
       let(:first_test_class) { Class.new(test_class) }
       let(:second_test_class) { Class.new(test_class) }
       before do
-        first_test_class.should_receive(:establish_connection).once.with('other_test')
+        first_test_class.should_receive(:establish_connection).once.with(:other_test)
         expect {
           first_test_class.config_file = 'other.yml'
         }.to change(test_class, :configurations).from({}).to(other_config)
 
-        second_test_class.should_receive(:establish_connection).once.with('other_test')
+        second_test_class.should_receive(:establish_connection).once.with(:other_test)
         expect {
           second_test_class.config_file = 'other'
         }.not_to change(test_class, :configurations)
